@@ -6,7 +6,7 @@
 	<!-- BuyController, BuyService, BuyDao 빈(객체)를 위한 설정파일입니다. -->
 	<!-- id는 변수명 역할의 식별자, class는 객체를 생성할 클래스(패키지명 필요) -->
 	<bean class="day1.review.BuyController" id="controller">
-		<!-- 의존관계 주입 : 생성자에 전달하는 인자가 service 이름의 bean -->
+		<!-- 의존관계 주입 : 생성자에 전달하는 인자가 service 이름의 bean --> 
 		<constructor-arg ref="service"/>
 	</bean>
 

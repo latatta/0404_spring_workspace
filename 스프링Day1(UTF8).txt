@@ -1,0 +1,73 @@
+﻿1. 구글 공유폴더 : java 11 다운로드 -> 더블클릭해서 중간에 내용변경없이 설치
+https://drive.google.com/drive/folders/1KsB3BCv6XGJQBR-elDZRn9wpv7YDpbXI?usp=sharing
+-> 환경변수의 JAVA_HOME 설정 수정 : 예시 C:\Program Files\Java\jdk-11.0.12
+
+2. spring.io 에서 sts(spring tool suite) 다운로드 3.9.18 버전 
+-> 압축은 [알아서 풀기] 선택 (한글경로명 아닌곳에 하세요.)
+
+3. 워크스페이스 폴더 spring_workspace 로 만들어 주세요.
+
+4. 용어
+1)디자인 패턴이란?
+소프웨어 개발 노하우를 규칙과 형식으로 정리한 것.- 코드 반복 최소화와 재사용을 효율적으로 하는 등등의 장점을 갖는다.
+
+2) 프레임웍(Framework)
+-애플리케이션 개발 시 자주사용되는 일반적인 기능을 미리 만들어서 제공한다. 필요한 부분을 수정 또는 추가하도록 한다.
+-여러 디자인패턴을 라이브러리(클래스의 모음) 형태로 제공하는 것이다.
+
+3) 스프링 프레임웍
+- javaEE를 사용하는 애플리케이션 개발을 단순하게 해주는 오픈소스 프레임워크
+- IoC (Inversion of Control,제어의 역전) : 일반적인 프로그램 흐름과 제어의 흐름이 다르다.
+
+5. 우리의 프로젝트에서 주로 다루게될 스프링 프레임웍의 디자인패턴 : MVC
+Model, View, Controller
+
+6. 프로젝트 시작
+1) file - new 
+	ㄴ spring legacy (name: 1bean)
+		ㄴ spring maven 선택
+2) 
+-> maven 프로젝트로변환
+-> spring project nature 추가
+-> build path : java11라이브러리 설정
+3) pom.xml 에 dependencies와 build 태그내용 작성
+4) src/main/resources '소스폴더' 만들기 
+	ㄴ 하위에 META-INF/spring '폴더'만들기
+나중에는 아래 폴더도 만들예정입니다.
+	ㄴ 하위에 META-INF/mybatis '폴더'만들기
+	ㄴ 하위에 META-INF/css 등등의 리소스 폴더사용	
+
+7. 자바 클래스의 의존관계 복습
+
+* 지금부터 사용할 클래스의 의존관계 : 3개의 클래스를 작성하여 각각 역할에 따른 메소드를 갖고 실행합니다.
+
+	사용자 요청 => controller -> service -> dao
+
+controller : 사용자의 요청을 직접 받아 처리(제어)하는 클래스
+service : 사용자의 요청에 따른 비지니스 로직을 처리하는 클래스
+dao : 데이터베이스의 sql 명령을 실행하는 메소드로 구성된 클래스
+
+1) 실습내용 : day1.review 패키지에 작성합니다.
+
+
+8. spring 에서 처리하는 의존관계
+- spring 프레임웍은 의존관계 주입을 spring에서 관리하는 방법으로 합니다. :IoC
+
+*spring 에서는 객체를 bean(빈) 이라고 부릅니
+
+
+	BuyDao dao = new BuyDao("Mybatis");
+
+	-> BuyDao는 클래스
+	-> new 연산으로 객체를 만듭니다.
+
+1) 실습내용 : applicationContext.xml (스프링에서 빈(객체)를 설정하는 파일입니다.)
+	src/main/resources/META-INF/spring 폴더에서 우클릭
+	 ㄴ new - spring bean configuration file 
+
+
+
+
+
+
+
