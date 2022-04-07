@@ -1,0 +1,35 @@
+[DB Connection pool]  DBCP		
+1.pooling : 자주쓰는 객체를 미리 여러개 만들어 필요할 때마다 사용하고 반납하는 방식이다. 객체를 모아둔 것을 객체 풀이라고 한다.		
+2.DB Connection pool : 사용이 끝난 DB 커넥션 객체는 다른 작업에서 다시 사용할 수 있도록 풀에 반납한다.		
+	-각 요청 (insert, update.. 등) 에 대해 별도의 커넥션 객체를 사용한다.	
+	-메모리에 가비지(garbage)가 생성되지 않고 속도가 빨라진다.	
+		ㄴ 쓰레기 : 사용하지 않는객체이나 메모리에 남아있음.
+		
+3. DataSource :  JavaEE 서버(톰캣)에서 DB 커넥션 풀을 관리하는 방법으로 사용한다.  
+(DriverManager 는 애플리케이션에서 관리한다.)		
+	-DataSource 는 서버에서 관리한다.	
+	-Connection 및 Statement 객체를 풀링한다.	
+	-분산트랜잭션을 처리할 수 있다	
+		
+		
+[JNDI] Java Naming and Directory Interface API			
+1.네트워크에서 사용되는 자원을 관리하는 디렉토리 서비스의  API 이다. 서버의 자원을 찾을 수 있도록 한다.		
+2.리소스 (resource, 자원) 		
+3. JDBC 리소스 이름은 java:comp/env/jdbc  (java:comp/env는 프로그램 환경 항목)		
+
+[Mybatis]
+- ibatis 프레임워크의 최신버전
+- SQL Mapping Framework for Java
+- 퍼시스턴스(영속성,persistence) 프레임워크
+- 마이바티스는 JDBC로 처리하는 상당부분의 코드와 파라미터 설정및 결과 매핑을 대신해준다. 
+** JSP 소스코드에서 Mybatis 클래스 의존관계
+
+	DataSource -> SqlSession (sql 실행에 필요한 클래스) -> SqlSessionFactory -> SqlSessionFactoryBuilder
+----------------------------------------------------------------------------------------------용어 정리
+
+
+mybatis-spring 프로젝트에서 필요한 내용 정리하세요.
+
+mybatis 파일
+- Mapper 파일들에 namespace 속성 필요
+- 

@@ -73,6 +73,13 @@
 			<version>2.0.6</version>
 		</dependency>
 
+		<!-- 코드 테스트용 라이브러리 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
 	</dependencies>
 
 
