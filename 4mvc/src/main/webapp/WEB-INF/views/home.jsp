@@ -24,5 +24,11 @@
 <a href="order">http://localhost:8085/app/order</a><br>
 클래스 정의없이 Map을 모델객체로 사용 : 
 <a href="map?idx=23&cnt=44&title=momo&page=11">http://localhost:8085/app/map?idx=23&cnt=44&title=momo&page=11</a><br>
+<h5>Model 객체 테스트</h5>
+<a href="model">http://localhost:8085/app/model</a><br>
+<a href="model">http://localhost:8085/app/redirect</a><br>
+<h5>@ModelAttribute 테스트</h5>
+<a href="modelAttr?idx=101">http://localhost:8085/app/modelAttr?idx=101</a><br>
+<a href="orderForm2">http://localhost:8085/app/orderForm2</a>
 </body>
 </html>
