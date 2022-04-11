@@ -3,6 +3,7 @@ package com.idev.app;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,13 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.idev.app.model.Order;
 
 /**
+ * 컨트롤러 클래스는 웹애플리케이션의 요청을 처리합니다.
  * Handles requests for the application home page.
  */
-@Controller
+@Controller		// @Component 대신에 역할을 표시하는 어노테이션
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -28,6 +31,8 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		// log : 프로그램 실행 기록을 남기는 것
+		// System.out.println 대신에 아래와 같이 실행기록을 남길 수 있습니다.
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -64,8 +69,8 @@ public class HomeController {
 		// 메소드의 매개변수는 url 요청파라미터(쿼리스트링)를 전달받게 됩니다. 
 		// 중요 : 파라미터 이름과 변수명은 일치하도록 합니다.
 		// int값은 파라미터는 기본이 String이므로 null일 때, int변환 못하고 오류
-		System.out.println("name : " + name);
-		System.out.println("age : " + age);
+		logger.info("[My]name : " + name);
+		logger.info("[My]age : " + age);
 	}
 	
 	
@@ -79,8 +84,17 @@ public class HomeController {
 	// 폼 양식에 입력된 값을 가져옵니다.
 	@RequestMapping(value="order", method = RequestMethod.POST)
 	public String order(Order order) {
-		System.out.println(order);
-		return "home";
+		// 메소드의 매개변수는 파라미터가 여러개일 때 model 객체를 사용합니다.
+		logger.info("[My]" + order);
+		return "home";				// url은 order, 화면은 home.jsp
+	}
+	
+	@RequestMapping(value="map")		// method 속성은 기본값이 RequestMethod.GET
+	public String map(@RequestParam Map<String, Object> param) {
+		// @RequestParam : 요청 파라미터
+		// 클래스 정의없이 Map을 model 객체로 사용하는 경우
+		System.out.println(param);
+		return "redirect:/";		// url이 context ~~~/app/ 로 새로운 요청으로 응답
 	}
 	
 	

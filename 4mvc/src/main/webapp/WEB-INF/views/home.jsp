@@ -20,6 +20,9 @@
 <h5>파라미터 테스트</h5>
 <a href="search?name=모모">http://localhost:8085/app/search?name=홍길동&age=23</a><br>
 <h5>모델객체를 이용한 파라미터 데이터 전달(폼 양식의 데이터)</h5>
+클래스 정의하고 모델객체로 사용 : 
 <a href="order">http://localhost:8085/app/order</a><br>
+클래스 정의없이 Map을 모델객체로 사용 : 
+<a href="map?idx=23&cnt=44&title=momo&page=11">http://localhost:8085/app/map?idx=23&cnt=44&title=momo&page=11</a><br>
 </body>
 </html>

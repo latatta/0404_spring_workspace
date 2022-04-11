@@ -17,8 +17,9 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
+	<!-- view 파일을 찾아주는 동작을 하는 bean -->
+		<beans:property name="prefix" value="/WEB-INF/views/" />	<!-- 접두어 : 폴더위치 -->
+		<beans:property name="suffix" value=".jsp" />				<!-- 접미어 : 확장자 -->
 	</beans:bean>
 	
 	<context:component-scan base-package="com.idev.app" />
