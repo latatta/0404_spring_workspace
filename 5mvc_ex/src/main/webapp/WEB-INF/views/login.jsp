@@ -30,7 +30,7 @@ input[type=submit], input[type=button] {
 </style>
 <script type="text/javascript">
 	function goHome() {
-		location.href='home.do';		/* 요청 url 변경 */
+		location.href='./';		/* 요청 url 변경 */
 	}
 </script>
 </head>
@@ -38,6 +38,14 @@ input[type=submit], input[type=button] {
 <c:if test="${success=='n' }">
 	<script type="text/javascript">
 		alert("로그인 정보가 틀립니다.!다시하세요.");
+		location.href="./login.do";
+	</script>
+</c:if>
+<c:if test="${success=='y' }">
+	<script type="text/javascript">
+		alert("로그인하셨습니다.");
+		//location.href="${pageContext.request.contextPath}";		// 절대경로
+		location.href="./";		// 상대경로 	-> http://localhost:8085/idev/	
 	</script>
 </c:if>
 <c:if test="${re=='y' }">
@@ -50,9 +58,9 @@ input[type=submit], input[type=button] {
 		 method : query string(GET) or form data(POST) -->
 	<form action="login.do" method="post" >
 		<label for="userid">아이디</label><br>
-		<input type="text" name="userid" id="userid" placeholder="이메일"><br><br>
+		<input type="text" name="email" id="userid" placeholder="이메일"><br><br>
 		<label for="pwd">패스워드</label><br>
-		<input type="password" name="pwd" id="pwd" placeholder="패스워드"><br><br>
+		<input type="password" name="password" id="pwd" placeholder="패스워드"><br><br>
 		<input type="submit" value="로그인">
 		<input type="button" value="홈" onclick="goHome()">
 	</form>

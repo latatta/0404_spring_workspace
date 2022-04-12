@@ -98,6 +98,10 @@ public class HomeController {
 		return "redirect:/";		// url이 context ~~~/app/ 로 새로운 요청으로 응답
 	}
 	
+	// 여기까지는 view -> controller 메소드 또는 요청파라미터 -> controller 메소드로 데이터 전달
+	// --------------------------------------------------------------------------
+	// 여기서부터는 controller -> view (또는 새로운 요청의 파라미터)로 데이터 전달
+	
 	@RequestMapping(value="model")
 	public void model(Model model) {
 		model.addAttribute("idx", 23);

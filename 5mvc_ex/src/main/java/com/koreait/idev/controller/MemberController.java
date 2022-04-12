@@ -1,6 +1,10 @@
 package com.koreait.idev.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,12 +14,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.koreait.idev.mapper.MemberMapper;
 import com.koreait.idev.model.Member;
 
 @Controller
 @RequestMapping(value = "member/")
+@SessionAttributes("member")
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
@@ -46,18 +53,34 @@ public class MemberController {
 	}		// 여기까지 회원가입 끝 ------------------------------------------
 	
 	@GetMapping("/update.do")
-	public String update() {
-		return "member/MemberUpdate";
+	public String update(@SessionAttribute("member") Member member) {
+		return "member/MemberUpdateForm";
 	}
 	
 	@PostMapping("/save.do")
-	public String save() {
-		return "redirect:member/update.do";
+	public void save(Member member, Model model, HttpServletResponse response) throws IOException {
+		mapper.updateMember(member);
+		model.addAttribute("member", member);
+		response.setContentType("text/html;UTF-8");
+		PrintWriter out = response.getWriter();
+		String url = "./update.do";
+		String message = "회원정보 수정되었습니다.";
+		out.print("<script>alert('" +message +"');location.href='"+url+"'");
+		out.print("</script>");
+		// return "redirect:../";
 	}
 	
 	@GetMapping("/idCheck.do")
-	public String idCheck() {
-		return "member/idCheck.jsp";
+	public String idCheck(String email, Model model) {		// 검사하기 위한 email은 요청파라미터로 받아옵니다.
+		String msg;
+		if (mapper.checkEmail(email)==0) {
+			msg="사용할 수 있는 이메일 입니다.";
+		} else {
+			msg="사용할 수 없는 이메일 입니다.";
+		}
+		model.addAttribute("email", email);
+		model.addAttribute("msg", msg);
+		return "member/idCheck";		// 뒤에 확장자는 붙이지 않는다
 	}
 	
 	
