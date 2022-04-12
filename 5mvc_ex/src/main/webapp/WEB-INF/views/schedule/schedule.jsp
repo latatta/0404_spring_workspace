@@ -17,8 +17,8 @@
 	<c:if test="${member != null }">
 		<!-- 세션 애트리뷰트가 null 아닐때만. -->
 		<form action="./save.do" method="get">
-			<input type="hidden" name="mno" value="${member.mno }">
-			<input type="text" name="title" placeholder="내용 입력하세요."> <input
+			<input type="hidden" name="mno" value="${member.mno }"> <input
+				type="text" name="title" placeholder="내용 입력하세요."> <input
 				type="date" name="sdate"> <input type="time" name="stime">
 			<input type="submit" value="추가"> <input type="button"
 				value="홈"
@@ -41,8 +41,11 @@
 			<c:forEach var="sch" items="${list}">
 				<tr>
 					<td>${sch.title}</td>
-					<td colspan="2">${sch.sdate }</td>
-<%-- 				<td><fmt:formatDate value="${sch.sdate }" pattern="yyyy-MM-dd" />
+					<td colspan="2">${sch.sdate }
+					<input type="button" onclick="delete_sch('${sch.idx }')" value="삭제">
+					</td>
+					<%--	날짜(Date)타입일 때 사용 				
+					<td><fmt:formatDate value="${sch.sdate }" pattern="yyyy-MM-dd" />
 					</td>
 					<td><fmt:formatDate value="${sch.sdate }" pattern="a hh:mm" />
 					</td> --%>
@@ -51,5 +54,14 @@
 
 		</table>
 	</c:if>
+	<script type="text/javascript">
+		function delete_sch(idx) {
+			const yn = confirm('스케줄 삭제할까요?');
+			console.log(yn);
+			if (yn==true)		// if (confirm('스케줄 삭제할까요?'))로 테스트해보고 바꾸세요.
+			location.href = "./delete.do?idx="+idx;
+		}
+	</script>
+
 </body>
 </html>

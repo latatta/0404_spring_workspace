@@ -44,7 +44,7 @@ div{
 </div>
 
 <div style="margin:auto;">
-<img src="./resources/image/lotus.jpg" width="200px" height="200px" >
+<img src="./resources/lotus.jpg" width="200px" height="200px" >
 </div>
 </body>
 </html>
