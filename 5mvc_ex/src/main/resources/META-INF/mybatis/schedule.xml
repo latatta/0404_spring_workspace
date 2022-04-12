@@ -12,7 +12,8 @@
 	SELECT * FROM SCHEDULE WHERE mno=#{mno} ORDER BY SDATE
 	</select>
 	<select id="checkMno" resultType="int" parameterType="int">
-		select mno from schedule where idx=#{idx}		<!-- 삭제하려는 idx가 로그인한 사용자의 데이터가 맞는지 확인 -->	
+		select NVL(mno,0) from schedule where idx=#{idx}		<!-- 삭제하려는 idx가 로그인한 사용자의 데이터가 맞는지 확인 -->	
+		<!-- mno값이 null일 때 0으로 대체 -->
 	</select>
 	<delete id="delete">
 		delete from schedule where idx=#{idx}

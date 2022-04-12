@@ -33,7 +33,8 @@ public class ScheduleController {
 																	// required=false로 지정하면 member가 필수요소가 아니게 됩니다.(400오류 해결)
 		// 로그인 상태가 아닐 때 : 400오류 (Missing session attribute 'member' of type Member)
 		//	-> @SessionAttribute에 대해 필수적인 값을 false로 설정 (required=false로 설정)
-		model.addAttribute("list", mapper.getSchedules(member.getMno()));
+		if (member != null)
+			model.addAttribute("list", mapper.getSchedules(member.getMno()));
 		return "schedule/schedule";
 	}
 
@@ -47,14 +48,14 @@ public class ScheduleController {
 	}
 	
 	@GetMapping("/delete.do")
-	public void delete(int idx, @SessionAttribute("member") Member member, 
+	public void delete(int idx, @SessionAttribute(value="member", required=false) Member member, 
 			HttpServletResponse response) throws IOException {
 		String message;
-		if (mapper.checkMno(idx) != member.getMno())		// mno 비교하기
-			message = "삭제할 수 없는 idx입니다.";
-		else {
+		if (member != null && mapper.checkMno(idx) == member.getMno()) {		// mno 비교하기
 			message = "삭제하였습니다.";
 			mapper.delete(idx);
+		} else {
+			message = "삭제할 수 없는 idx입니다.";
 		}
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
