@@ -19,7 +19,7 @@
 
 				<Context docBase="c:/dev1228/upload" path="/upload" reloadable="true"/>
 				
-			<Context docBase="7freeboard" path="/idev" reloadable="true" source="org.eclipse.jst.jee.server:7freeboard"/></Host>
+			<Context docBase="0411_4Practice" path="/idev" reloadable="true" source="org.eclipse.jst.jee.server:0411_4Practice"/></Host>
 		</Engine>
 		<Connector acceptCount="100" connectionTimeout="20000" executor="tomcatThreadPool" maxKeepAliveRequests="15" port="${nio.http.port}" protocol="org.apache.coyote.http11.Http11NioProtocol" redirectPort="${nio.https.port}"/>
 	</Service>
