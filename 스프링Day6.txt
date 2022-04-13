@@ -1,8 +1,96 @@
-1. urlê³¼ ë©”ì†Œë“œë¥¼ ë§¤í•‘í•˜ëŠ” ë°©ë²•
-2. view (jsp) íŒŒì¼ì„ ì •í•˜ëŠ” ë°©ë²•
-3. ë§¤í•‘ ë©”ì†Œë“œì—ì„œ ìš”ì²­ ì²˜ë¦¬ í›„ ë¦¬ë‹¤ì´ë ‰íŠ¸ í•˜ëŠ” ë°©ë²•
-4. ìš”ì²­ method ë°©ì‹ì´ get ë˜ëŠ” post ì¼ë•Œë¥¼ ì§€ì •í•´ì„œ ë§¤í•‘í•˜ëŠ” ì–´ë…¸í…Œì´ì…˜
+//Áö³­½Ã°£ º¹½À
 
-5.view(jsp) íŒŒì¼ì—ì„œ controller ë¡œ ë°ì´í„°ë¥¼ ì „ë‹¬í•˜ëŠ” ë°©ë²•
-6. controller ì—ì„œ view(jsp) íŒŒì¼ë¡œ ë°ì´í„°ë¥¼ ì „ë‹¬í•˜ëŠ” ë°©ë²•
-7. ë§¤í•‘ ë©”ì†Œë“œì—ì„œ ìš”ì²­ ì²˜ë¦¬ í›„ ë¦¬ë‹¤ì´ë ‰íŠ¸ í•  ë•Œ íŒŒë¼ë¯¸í„°ë¥¼ ë³´ë‚´ëŠ” ë°©ë²•
+url ¸ÅÇÎ ¸Þ¼ÒµåÀÇ ¸Å°³º¯¼ö·Î
+Model model ¼±¾ð : mvc ¸ðµ¨2 ¹æ½Ä¿¡¼­ »ç¿ëµÇ´Â µ¥ÀÌÅÍ ÀúÀå °´Ã¼
+-jsp·Î´Â request.setAttribute ,session.setAttribute ¿Í °°Àº µ¿ÀÛÀÔ´Ï´Ù.
+-model.addAttribute¸Þ¼Òµå·Î µ¥ÀÌÅÍ ÀúÀå. ±âº»ÀûÀ¸·Î´Â request.setAttribute ¶ó°í ÀÌÇØÇÏ¼¼¿ä.
+
+@ModelAttribute : model °´Ã¼·Î ÁöÁ¤ÇÏ´Â ¾î³ëÅ×ÀÌ¼Ç
+@SessionAttributes : model °´Ã¼ Áß session ¹üÀ§¿¡¼­ »ç¿ëµÇµµ·Ï ÁöÁ¤ÇÔ.¿©·¯°³¸¦ ¹è¿­·Î ÁöÁ¤ÇÒ¼ö ÀÖÀ½. ÀÛ¼º À§Ä¡´Â ÄÁÆ®·Ñ·¯ Å¬·¡½º ¼±¾ð À§¿¡¼­ ÇÕ´Ï´Ù.
+@SessionAttribute : session ¿¡ ÀúÀåµÈ model °´Ã¼ °¡Á®¿À±â. ¸ÅÇÎ ¸Þ¼Òµå ¸Å°³º¯¼ö¿Í ÇÔ²² ÀÛ¼º.
+
+
+//// Controller Å¬·¡½ºÀÇ url ¸ÅÇÎ ¸Þ¼Òµå Á¤¸®///
+
+1. url°ú ¸Þ¼Òµå¸¦ ¸ÅÇÎÇÏ´Â ¹æ¹ý
+2. view (jsp) ÆÄÀÏÀ» Á¤ÇÏ´Â ¹æ¹ý
+3. ¸ÅÇÎ ¸Þ¼Òµå¿¡¼­ ¿äÃ» Ã³¸® ÈÄ ¸®´ÙÀÌ·ºÆ® ÇÏ´Â ¹æ¹ý
+4. ¿äÃ» method ¹æ½ÄÀÌ get ¶Ç´Â post ÀÏ¶§¸¦ ÁöÁ¤ÇØ¼­ ¸ÅÇÎÇÏ´Â ¾î³ëÅ×ÀÌ¼Ç
+
+5.view(jsp) ÆÄÀÏ¿¡¼­ controller ·Î µ¥ÀÌÅÍ¸¦ Àü´ÞÇÏ´Â ¹æ¹ý
+6. controller ¿¡¼­ view(jsp) ÆÄÀÏ·Î µ¥ÀÌÅÍ¸¦ Àü´ÞÇÏ´Â ¹æ¹ý
+7. ¸ÅÇÎ ¸Þ¼Òµå¿¡¼­ ¿äÃ» Ã³¸® ÈÄ ¸®´ÙÀÌ·ºÆ® ÇÒ ¶§ ÆÄ¶ó¹ÌÅÍ¸¦ º¸³»´Â ¹æ¹ý
+ 
+/////////////////////////////////////
+
+6fileupload ·Î ÇÁ·ÎÁ§Æ®¸¦ ¸¸µå½Ã°í
+-com.koreait.idev ·Î groupID ¸¦ ÇÏ¼¼¿ä.
+
+-5ÇÁ·ÎÁ§Æ®¿Í ¶È°°ÀÌ È¯°æ¼³Á¤À» ÇØ³õÀ¸¼¼¿ä.
+(xml ÆÄÀÏ, ¸¶ÀÌ¹ÙÆ¼½º ¸ÅÆÛ xmlÀº °°ÀÌ ¸¸µì´Ï´Ù.)
+
+
+[[[[[ÆÄÀÏ ¾÷·Îµå¿¡¼­ ÇÊ¿äÇÑ ÄÚµå]]]]]
+
+1. pom.xml ¿¡ Ãß°¡ÇÒ ¶óÀÌºê·¯¸®
+<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+      <dependency>
+         <groupId>commons-fileupload</groupId>
+         <artifactId>commons-fileupload</artifactId>
+         <version>1.3</version>
+      </dependency>
+
+
+
+2. servlet-context.xml Ãß°¡
+
+<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="104857600" />
+		<beans:property name="maxUploadSizePerFile"
+			value="20971520" />
+		<beans:property name="defaultEncoding" value="utf-8" />
+	</beans:bean>
+
+
+
+3. jsp ÆÄÀÏ¿¡¼­ form ÅÂ±×¿Í input ÅÂ±× ÀÛ¼º
+	<form action="gallery" method="post" enctype="multipart/form-data">
+		<input type="text" placeholder="Á¦¸ñÀÔ·ÂÇÏ¼¼¿ä."><br>
+		ÀÌ¹ÌÁö ÆÄÀÏÀ» ¼±ÅÃÇÏ¼¼¿ä.(ÃÖ´ë 3°³)<br>
+		<input type="file" name="pics" accept="image/*"><br>
+		<input type="file" name="pics" accept="image/*"><br>
+		<input type="file" name="pics" accept="image/*"><br>
+		<button>Àü¼Û</button>
+	</form>
+
+4. controller ¿¡¼­ ÆÄÀÏÀü¼Û ¹Þ°í ¼­¹ö ¾÷·Îµå Æú´õ¿¡ ÀúÀåÇÏ±â
+
+@PostMapping("gallery")
+	public void upload(Gallery vo) {
+		//¼­¹ö¿¡¼­ Àü¼Û¹ÞÀº ÆÄÀÏÀ» ÀúÀåÇÒ Æú´õ¸¦ Á¤ÇÕ´Ï´Ù. : c:\\upload
+		String path = "c:\\upload";		//  \´Â Ãâ·Â ¶Ç´Â ¹®ÀÚ¿­·Î ÁöÁ¤ÇÒ¶§´Â µÎ¹ø¾¹´Ï´Ù.
+		
+		//¼­¹ö¿¡ Àü¼ÛµÈ ³»¿ë È®ÀÎ Å×½ºÆ®
+		logger.info("title:" + vo.getTitle());
+		for(MultipartFile f : vo.getPics()) {
+			logger.info("ÆÄÀÏ¸í : " + f.getOriginalFilename());  //Àü¼Û¹ÞÀº ÆÄÀÏ¸í
+			logger.info("ÆÄÀÏ Å©±â :" + f.getSize());
+			logger.info("·£´ý¹®ÀÚ¿­ :" + UUID.randomUUID().toString());
+			//¼­¹ö¿¡ ÀúÀåÇÒ ÆÄÀÏ°´Ã¼¸¦ »ý¼ºÇÕ´Ï´Ù. : »ý¼ºÀÚ ÀÎÀÚ´Â ÆÄÀÏ°´Ã¼ÀÇ °æ·Î¿Í ÆÄÀÏ¸í
+//			File sfile = new File(path + "\\" + f.getOriginalFilename());
+			String temp = f.getOriginalFilename();
+			String ext = temp.substring(temp.indexOf('.'), temp.length());  //È®ÀåÀÚ¸¸ ÃßÃâ
+			File sfile = new File(path + "\\" + UUID.randomUUID().toString().substring(0, 8)+ext);
+			//f.getOriginalFilename() ´Â ¿©·¯ Á¢¼ÓÀÚ(»ç¿ëÀÚ)°¡ Áßº¹µÈ ÀÌ¸§À» »ç¿ëÇÒ¼ö ÀÖ¾î¿ä.
+			//-> ÆÄÀÏ¸íÀº ¼­¹ö¿¡¼­ ÀÓÀÇ·Î Á¤ÇØÁÙ°ÍÀÔ´Ï´Ù.
+			try {
+				// MultipartFile  f ·Î Àü¼Û¹ÞÀº ÆÄÀÏÀ» ÂüÁ¶ÇÏ°í ÀÖÀ¸¹Ç·Î 
+				if(f.getSize() !=0)
+				f.transferTo(sfile);		//¼­¹ö¿¡ ÀúÀåÇÒ ÆÄÀÏ°´Ã¼·Î Àü¼ÛÇÕ´Ï´Ù. (¼­¹ö ¾÷·Îµå)
+			} catch (IllegalStateException | IOException e) {
+			    logger.info("ÆÄÀÏ Àü¼Û¿À·ù : " + e.getMessage());
+			} 
+		}
+		
+	}
