@@ -15,5 +15,6 @@
 		배송날짜 : <input name="devDate" type="date">
 		<input type="submit" value="주문">
 	</form>
+	<a href="/">home</a>
 </body>
 </html>

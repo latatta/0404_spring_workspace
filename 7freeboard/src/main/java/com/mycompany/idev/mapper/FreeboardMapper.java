@@ -8,4 +8,7 @@ import com.mycompany.idev.dto.Freeboard;
 public interface FreeboardMapper {
 	List<Freeboard> getPagelist(Map<String, Integer> map);
 	int getCount();
+	void insert(Freeboard dto);
+	void update(Freeboard dto);
+	Freeboard getOne(int idx);
 }

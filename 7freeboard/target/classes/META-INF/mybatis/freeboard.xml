@@ -4,11 +4,34 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.idev.mapper.FreeboardMapper"> <!-- namespace : mybatis-spring에서는 매퍼 인터페이스로 지정 -->
 
-	<select id="getPagelist" parameterType="Map" resultType="Freeboard">
+	<!-- 새글 쓰기 -->
+	<insert id="insert" parameterType="Freeboard">
+		INSERT INTO freeboard(idx, name, password, subject,
+		content)
+		VALUES (board_idx_seq.nextval, #{name}, #{password},
+		#{subject}, #{content})
+	</insert>
+
+	<!-- 글 수정 -->
+	<update id="update" parameterType="Freeboard">
+		UPDATE freeboard Set
+		content=#{content}, wdate=sysdate WHERE idx=#{idx}
+	</update>
+
+	<!-- 글 상세보기 -->
+	<select id="getOne" parameterType="int" resultType="Freeboard">
+		SELECT * FROM
+		freeboard WHERE idx=#{idx}
+	</select>
+
+	<select id="getPagelist" parameterType="Map"
+		resultType="Freeboard">
 		SELECT * FROM (
 		SELECT rownum AS R, T.* FROM
-		(SELECT * FROM FREEBOARD f ORDER BY idx DESC) T)
-		WHERE R BETWEEN #{startNo} AND #{endNo}
+		(SELECT * FROM
+		FREEBOARD f ORDER BY idx DESC) T)
+		WHERE R BETWEEN #{startNo} AND
+		#{endNo}
 	</select>
 
 	<select id="getCount" resultType="int">

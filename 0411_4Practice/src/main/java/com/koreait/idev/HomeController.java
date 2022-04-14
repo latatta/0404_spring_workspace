@@ -71,10 +71,8 @@ public class HomeController {
 	
 	// orderForm.jsp의 폼 양식에 입력된 값 가져오기
 	@RequestMapping(value="order", method=RequestMethod.POST)
-	public String order(Order order, HttpServletResponse response) throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.print(order);
+	public String order(Order order) {
+		System.out.println(order);
 		return "home";
 	}
 }

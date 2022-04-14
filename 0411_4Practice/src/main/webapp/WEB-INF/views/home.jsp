@@ -17,7 +17,9 @@
 <a href="test">test</a><br>				<!-- HomeController.java에 메소드를 하나 생성하여 @RequestMapping(value="test")를 생성해야 함
 												생성하지 않았을 시, 404오류 -->
 <a href="hello">hello</a><br>						
-<a href="search?name=홍길동&age=22">search</a>		<!-- url의 파라미터(홍길동, 22)는 HomeController의 리퀘스트 매퍼가 있는 
+<a href="search?name=홍길동&age=22">search</a><br>		<!-- url의 파라미터(홍길동, 22)는 HomeController의 리퀘스트 매퍼가 있는 
 															value="search"인 메소드의 매개변수로 들어감 (매개변수와 파라미터이름은 일치해야 한다) -->
+<a href="order">order</a>															
+														
 </body>
 </html>
