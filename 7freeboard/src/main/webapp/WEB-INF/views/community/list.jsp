@@ -25,7 +25,7 @@
 	<tr>
 		<td>${vo.idx }</td> 			<!-- FreeboardController에서 list메소드에서 model.addAttribute를 통해 page 추가,
  												전송된 page를 사용 -->
- 		<td><a href="detail?idx=${vo.idx}&page=${page.pageNo}" class="title">${vo.subject }</a>
+ 		<td><a href="detail?idx=${vo.idx}&pageNo=${page.pageNo}" class="title">${vo.subject }</a>
  		...<span style="color:orange;font-size: 80%;">(${vo.commentCount})
  		</span></td>
  		<td>${vo.name }</td>
@@ -40,7 +40,7 @@
  	</c:forEach>
  	<tr><td colspan="4">Go!
  	<!-- a태그 url요청 get 메소드 -->
- 	<a class="button" href="insert?page=${page.pageNo }">글쓰기</a>
+ 	<a class="button" href="insert?pageNo=${page.pageNo }">글쓰기</a>
  	<a class="button" href="${pageContext.request.contextPath }">홈</a></td>
  	<td>작성글 총 개수 : ${page.totalCount}</td>
  	</tr>

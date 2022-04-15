@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.idev.mapper.CommentsMapper">
+
+	<insert id="insert" parameterType="Comments">
+		insert into comments(idx, mref, name, content, ip)
+		values(cmt_idx_seq.nextval, #{mref}, #{name}, #{content}, #{ip})
+	</insert>
+	
+	<select id="list" parameterType="int" resultType="Comments">
+		select * from comments where mref=#{mref}
+	</select>
+	
+	<update id="commentCountUp" parameterType="int">
+		<!-- freeboard 테이블의 댓글 갯수 컬럼값 증가 : insert의 트랜잭션-->
+		update freeboard set commentCount=commentCount+1
+		where idx=#{idx}
+	</update>
+	
+	<update id="commentCountDown" parameterType="int">
+		<!-- freeboard 테이블의 댓글 갯수 컬럼값 감소 : delete의 트랜잭션 -->
+		update freeboard set commentCount=commentCount-1
+		where idx=#{idx}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from comments where idx=#{idx}
+	</delete>
+	
+	<update id="updateCmtCount" parameterType="int">
+		<!-- 댓글 추가/삭제 동시에 적용 가능-->
+		update freeboard set commentCount=(
+			select count(*) from comments where mref=#{idx}
+		)
+		where idx=#{idx}
+	</update>
+</mapper>

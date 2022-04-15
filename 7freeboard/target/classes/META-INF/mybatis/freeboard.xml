@@ -23,6 +23,11 @@
 		SELECT * FROM
 		freeboard WHERE idx=#{idx}
 	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="readCount" parameterType="int">
+		UPDATE freeboard SET readCount=readCount+1 where idx=#{idx}
+	</update>
 
 	<select id="getPagelist" parameterType="Map"
 		resultType="Freeboard">

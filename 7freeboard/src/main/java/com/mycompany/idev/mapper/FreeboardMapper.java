@@ -11,4 +11,7 @@ public interface FreeboardMapper {
 	void insert(Freeboard dto);
 	void update(Freeboard dto);
 	Freeboard getOne(int idx);
+	void readCount(int idx);		
+	// resultType이 없는데 리턴타입이 int로 되나요? -> 필요한 경우에는 insert,update,delete 가능합니다. 반영된 행의 갯수가 리턴되어요
+
 }
