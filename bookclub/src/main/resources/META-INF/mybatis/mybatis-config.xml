@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 작성자: 정세은 -->
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.koreait.bookclub.dto.BookDto" alias="BookDto"/>
+		<typeAlias type="com.koreait.bookclub.dto.BookRentDto" alias="BookRentDto"/>
+		<typeAlias type="java.util.Map" alias="Map"/>
+	</typeAliases>
+
+</configuration>
+
+

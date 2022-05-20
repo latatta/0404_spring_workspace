@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.idev.mapper.MemberMapper"> 
-<!-- namespace : mybatis-spring에서는 매퍼 인터페이스로 지정 -->
+<!-- namespace : mybatis-spring에서는 매퍼 인터페이스로 지정합니다. -->
 
 	<select id="getCount" resultType="int"> <!-- id : 식별역할의 변수 -->
 	select count(*) from member

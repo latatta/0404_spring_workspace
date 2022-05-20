@@ -1,10 +1,12 @@
 package com.mycompany.idev.mapper;
 
+import java.util.List;
+
 import com.mycompany.idev.dto.Comments;
 
 public interface CommentsMapper {
 	public void insert(Comments dto);
-	public Comments list(int mref);
+	public List<Comments> list(int mref);
 	public void commentCountUp(int idx);
 	public void commentCountDown(int idx);
 	public void delete(int idx);
